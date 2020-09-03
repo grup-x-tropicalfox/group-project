@@ -19,11 +19,16 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.get('/data', (req, res) => {
-  toUnicode.findAll()
-   .then(response =>{
-     console.log(response);
-   })
+
+app.delete('/data/:id', (req, res) => {
+  Todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(response => {
+      console.log(response);
+    })
 })
 
 app.listen(port, () => {
