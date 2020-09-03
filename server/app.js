@@ -17,6 +17,17 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.delete('/data/:id', (req, res) => {
+  Todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(response => {
+      console.log(response);
+    })
+})
+
 app.listen(port, () => {
   console.log('app listening on port ', port);
 })
